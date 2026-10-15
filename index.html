@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Travel Adventure ✈️</title>
+<style>
+:root{--bg:#F6EEDF;--card:#FFFFFF;--ink:#3B2A20;--soft:#7A5C45;--pink:#F4B6C7;--hot:#D6336C;--blue:#5B8FB9;--ok:#3E9B6B;--no:#C65A5A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2B1E19;--card:#3A2A23;--ink:#F6EEDF;--soft:#D9BFA8;--pink:#8C4A62;--hot:#FF8FB1;--blue:#8DB8DA;--ok:#6FCF9B;--no:#F08A8A}}
+:root[data-theme="dark"]{--bg:#2B1E19;--card:#3A2A23;--ink:#F6EEDF;--soft:#D9BFA8;--pink:#8C4A62;--hot:#FF8FB1;--blue:#8DB8DA;--ok:#6FCF9B;--no:#F08A8A}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS",Verdana,sans-serif;font-size:18px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--pink);display:flex;gap:6px;overflow-x:auto;padding:10px 14px}
+nav a{white-space:nowrap;color:var(--ink);text-decoration:none;font-weight:700;background:var(--card);border-radius:20px;padding:6px 14px;font-size:15px}
+main{max-width:980px;margin:0 auto;padding:0 18px 60px}
+h1,h2{font-family:Georgia,serif;margin:0 0 8px;line-height:1.1}
+h1{font-size:clamp(40px,9vw,76px)}h2{font-size:clamp(30px,6vw,44px)}
+.kick{color:var(--hot);font-weight:700;letter-spacing:2px;font-size:14px}
+.hero{background:var(--pink);border-radius:0 0 32px 32px;padding:44px 24px;margin:0 -18px 20px;display:grid;gap:18px}
+.ticket{background:var(--bg);border:3px dashed var(--hot);border-radius:20px;padding:18px 22px;max-width:420px}
+.ticket p{margin:4px 0}
+section{padding:34px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:16px 0}
+.card{perspective:700px;height:190px;cursor:pointer}
+.in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.f .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--card);border:3px solid var(--pink);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px;text-align:center}
+.back{transform:rotateY(180deg);background:var(--pink);border-color:var(--hot)}
+.em{font-size:56px;line-height:1}.face b{font-size:20px}.back i{font-size:15px}
+button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:8px 16px;background:var(--hot);color:#fff;cursor:pointer}
+.say{background:var(--card);color:var(--ink);padding:4px 10px}
+.box{background:var(--card);border-left:10px solid var(--hot);border-radius:16px;padding:16px 20px;margin:14px 0}
+.q button{display:block;width:100%;text-align:left;background:var(--bg);color:var(--ink);border:2px solid var(--pink);margin:6px 0}
+.q button.ok{background:var(--ok);color:#fff}.q button.no{background:var(--no);color:#fff}
+input,select{font:inherit;width:100%;padding:8px 12px;border-radius:12px;border:2px solid var(--pink);background:var(--card);color:var(--ink);margin:4px 0 10px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.tq{display:none;background:var(--bg);border:2px dashed var(--soft);border-radius:12px;padding:8px 12px;margin-top:8px;font-size:15px}
+.t .tq{display:block}
+canvas{background:var(--card);border:3px dashed var(--hot);border-radius:16px;width:100%;touch-action:none}
+svg{max-width:100%;height:auto;border-radius:20px}
+footer{text-align:center;color:var(--soft);padding:20px}
+</style></head><body>
+<nav><a href="#top">✈️ Start</a><a href="#pack">🧳 Pack</a><a href="#airport">🏢 Airport</a><a href="#plane">💺 Plane</a><a href="#missions">🎤 Missions</a><a href="#dream">🌍 Dream trip</a></nav>
+<main id="top">
+<div class="hero"><p class="kick">YOUR TRAVEL ADVENTURE STARTS NOW!</p><h1>TRAVEL ADVENTURE ✈️</h1><p style="font-size:22px;margin:0">Your next adventure starts here!</p>
+<div class="ticket"><p class="kick">BOARDING PASS</p><p>Passenger: <b>YOU</b></p><p>To: ______________</p><p>Seat: window or aisle?</p></div></div>
+<div class="box"><b>Say it!</b> Where would you like to travel? 🌍 Would you like to go by plane? ✈️ What do you put in your suitcase? 🧳<br><small>Tip: tap a card to flip it. Tap 🔊 to listen.</small></div>
+
+<section id="pack"><p class="kick">STEP 1 · YOU ARE PACKING!</p><h2>Pack your bag 🧳</h2><div class="grid" id="g-pack"></div>
+<div class="two"><div class="box"><b>What's in your suitcase?</b><br>Say 3 sentences: <i>I take my ___. I need my ___. I have a ___.</i></div>
+<div class="box"><b>Write 3 things:</b><input placeholder="1."><input placeholder="2."><input placeholder="3."></div></div></section>
+
+<section id="airport"><p class="kick">STEP 2 · YOU ARE AT THE AIRPORT.</p><h2>At the airport 🏢</h2><div class="grid" id="g-airport"></div>
+<h3>What do you say? 🗣️</h3><div id="quiz"></div></section>
+
+<section id="plane"><p class="kick">STEP 3 · YOU ARE ON THE PLANE.</p><h2>On the plane ✈️</h2><div class="grid" id="g-plane"></div>
+<div class="two"><svg role="img" aria-label="Plane cabin: a girl reads by the window, a boy sleeps, a backpack is in the overhead compartment" viewBox="0 0 380 240"><rect width="380" height="240" fill="#FFFFFF"/><rect x="20" y="14" width="340" height="38" rx="8" fill="#F4B6C7"/><rect x="270" y="22" width="48" height="22" rx="6" fill="#D6336C"/><ellipse cx="52" cy="120" rx="26" ry="36" fill="#9CC4DE"/><rect x="86" y="136" width="100" height="72" rx="10" fill="#E7C9A9"/><circle cx="136" cy="116" r="22" fill="#7A5C45"/><rect x="118" y="152" width="36" height="24" fill="#D6336C"/><rect x="210" y="136" width="100" height="72" rx="10" fill="#E7C9A9"/><circle cx="260" cy="116" r="22" fill="#3B2A20"/><text x="290" y="98" font-size="22" fill="#5B8FB9">Zzz</text></svg>
+<div class="box"><b>Look and tell me! 👀</b><br>What is the girl doing?<br>Where is the backpack?<br>Who is sitting by the window?<br>What is the boy doing?<div class="tq">Answers: She is reading. / It is in the overhead compartment. / The girl is. / He is sleeping.</div></div></div></section>
+
+<section id="missions"><p class="kick">STEP 4 · YOU ARE THERE!</p><h2>Speaking missions 🎤</h2><div id="mis"></div></section>
+
+<section id="dream"><p class="kick">FINAL MISSION</p><h2>MY DREAM TRIP ✈️</h2>
+<div class="two"><div class="box">
+Destination<input id="d1" placeholder="Japan, Paris, Disney...">
+How do I travel?<select id="d2"><option>by plane ✈️</option><option>by train 🚆</option><option>by car 🚗</option><option>by bus 🚌</option></select>
+My suitcase is<input id="d3" placeholder="pink, blue, big...">
+I take<input id="d4" placeholder="3 things">
+My seat<select id="d5"><option>a window seat</option><option>an aisle seat</option></select>
+On the plane I want to<input id="d6" placeholder="watch a movie, sleep, eat...">
+I want to visit<input id="d7" placeholder="a place">
+<button onclick="mk()">✨ Make my card</button></div>
+<div><div class="box" id="out"><b>Your card appears here.</b></div><p><b>Draw your trip! 🎨</b></p><canvas id="cv" width="600" height="320"></canvas>
+<p><button class="say" style="background:#D6336C;color:#fff" onclick="col='#D6336C'">pink</button> <button class="say" style="background:#7A5C45;color:#fff" onclick="col='#7A5C45'">brown</button> <button class="say" style="background:#5B8FB9;color:#fff" onclick="col='#5B8FB9'">blue</button> <button class="say" style="background:#3E9B6B;color:#fff" onclick="col='#3E9B6B'">green</button> <button class="say" onclick="cx.clearRect(0,0,600,320)">clear</button></p></div></div></section>
+</main>
+<footer><label><input type="checkbox" id="tm" style="width:auto" onchange="document.body.classList.toggle('t',this.checked)"> 👩‍🏫 Teacher mode</label></footer>
+<script>
+const D={
+pack:[["🧳","suitcase","mala","I have a pink suitcase."],["🎒","backpack","mochila","My backpack is small."],["🛂","passport","passaporte","Here is my passport."],["🎫","ticket","passagem","This is my ticket."],["👕","clothes","roupas","I take my clothes."],["👟","shoes","sapatos","My shoes are new."],["📱","phone","celular","I need my phone."],["🔌","charger","carregador","Where is my charger?"],["🎧","headphones","fones","I love my headphones."],["🪥","toothbrush","escova de dentes","I take my toothbrush."],["📖","book","livro","I read a book."],["🧸","teddy bear","ursinho","My teddy bear is in my bag."]],
+airport:[["🏢","airport","aeroporto","We are at the airport."],["✈️","plane","avião","The plane is big."],["🚪","gate","portão","Where is my gate?"],["⏰","flight","voo","What time is my flight?"],["🧑‍✈️","pilot","piloto","The pilot is nice."],["👩‍💼","passenger","passageiro","I am a passenger."],["🍪","snack","lanche","I want a snack."],["🚻","bathroom","banheiro","Where is the bathroom?"]],
+plane:[["💺","seat","assento","This is my seat."],["🪟","window","janela","I want the window."],["🔗","seat belt","cinto","Fasten your seat belt."],["💧","water","água","Can I have water, please?"],["🍿","movie","filme","I watch a movie."],["😴","sleep","dormir","I sleep on the plane."],["☁️","cloud","nuvem","I see a big cloud."],["🙋","help","ajuda","Can you help me, please?"]]};
+for(const k in D)document.getElementById("g-"+k).innerHTML=D[k].map(([e,w,p,s])=>`<div class="card" onclick="this.classList.toggle('f')"><div class="in"><div class="face"><span class="em">${e}</span><b>${w}</b></div><div class="face back"><b>${p}</b><i>${s}</i><button class="say" data-s="${s}" onclick="say(event,this.dataset.s)">🔊</button></div></div></div>`).join("");
+function say(e,t){e.stopPropagation();try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(x){}}
+const Q=[["You want water on the plane. 💧",["Can I have water, please?","Where is my gate?","I have a passport."],0],["You can not find your gate. 🚪",["I take my shoes.","Where is my gate?","The pilot is nice."],1],["You show your passport. 🛂",["Here is my passport.","I want a snack.","I sleep on the plane."],0],["You need help with your bag. 🧳",["I see a cloud.","This is my ticket.","Can you help me, please?"],2]];
+document.getElementById("quiz").innerHTML=Q.map(([t,o,a])=>`<div class="box q"><b>${t}</b>${o.map((x,i)=>`<button data-a="${i==a}" onclick="this.className=this.dataset.a=='true'?'ok':'no'">${x}</button>`).join("")}</div>`).join("");
+const M=[["1 · Check-in ✅","You are at the check-in counter. You are the passenger.","Round 2: your bag is too heavy!",["Start with: I am going to...","Choose: It is my bag. / It is my backpack."],"Teacher = airline agent. Where are you going? Passport, please. Do you have a bag? What color is it?"],["2 · Find your gate 🚪","You are at the airport. Find your gate!","Round 2: the gate changed!",["Start with: Excuse me...","Choose: Where is gate 12? / Where is my gate?"],"Teacher = airport worker. Gate 12? Go straight, then left. Do you have your ticket?"],["3 · On the plane 💺","You are in your seat. You are thirsty!","Round 2: someone is in your seat!",["Start with: Can I have...","Choose: water, please? / a snack, please?"],"Teacher = flight attendant or neighbor. Water or juice? Are you OK? What are you doing?"],["4 · Baggage claim 🛄","You are at baggage claim. Your suitcase is not here!","Round 2: you forgot the color!",["Start with: Excuse me, I can not find...","Choose: My suitcase is pink. / It is big."],"Teacher = staff. What is the problem? What color is it? Is it big or small?"]];
+document.getElementById("mis").innerHTML=M.map(([t,s,r,h,tq],i)=>`<div class="box"><b>${t}</b><br>${s}<br><small>${r}</small><br><button onclick="hn(this,${i})">💡 Hint</button><div></div><div class="tq">${tq}</div></div>`).join("");
+const hs=[0,0,0,0];function hn(b,i){const d=b.nextElementSibling;if(hs[i]<2){d.innerHTML+="<p>💡 "+M[i][3][hs[i]++]+"</p>"}}
+function v(i){return document.getElementById(i).value||"___"}
+function mk(){document.getElementById("out").innerHTML=`<b>My dream trip</b><br>I want to travel to ${v("d1")}.<br>I am traveling ${v("d2")}.<br>My suitcase is ${v("d3")}.<br>I am taking ${v("d4")}.<br>I would like ${v("d5")}.<br>On the plane I want to ${v("d6")}.<br>I want to visit ${v("d7")}.<br>I am excited because ___!`}
+const cv=document.getElementById("cv"),cx=cv.getContext("2d");let col="#D6336C",dr=false;cx.lineWidth=5;cx.lineCap="round";
+function pt(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*600/r.width,(e.clientY-r.top)*320/r.height]}
+cv.onpointerdown=e=>{dr=true;const[x,y]=pt(e);cx.strokeStyle=col;cx.beginPath();cx.moveTo(x,y)};
+cv.onpointermove=e=>{if(dr){const[x,y]=pt(e);cx.lineTo(x,y);cx.stroke()}};
+cv.onpointerup=cv.onpointerleave=()=>dr=false;
+</script></body></html>
